@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Models;
+namespace Appoint\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-use App\Models\Project;
+use Appoint\Models\Project;
 class Client extends Model
 {
     use SoftDeletes;
