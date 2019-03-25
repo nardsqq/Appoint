@@ -1,33 +1,37 @@
 @extends('layouts.app')
 
 @section('content')
-{{-- <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                </div>
-            </div>
-        </div>
-    </div>
-</div> --}}
-
 <div class="container">
     <section class="row justify-content-center">
-        <div class="col-md-12">
-            <div class="alert alert-light" role="alert">
-                Welcome to Appoint, a lightweigth events booking system. <a href="#" class="alert-link">Book</a> an event or a performer now.
+        <section class="col-md-12">
+            <div class="shadow-sm p-3 mb-5 mt-4 bg-white rounded">
+                Welcome to <strong>Appoint</strong>, a lightweight events booking system. <a href="#" class="text-secondary"><strong>Book</strong></a> an event or a performer now.
             </div>
-        </div>
+        </section>
+        <section class="col-md-4">
+            <div class="shadow-sm p-3 mb-5 bg-white rounded">
+                <h3>Upcoming Events</h3>
+                <p class="h1">
+                    0
+                </p>
+            </div>
+        </section>
+        <section class="col-md-4">
+            <div class="shadow-sm p-3 mb-5 bg-white rounded">
+                <h3>Available Performers</h3>
+                <p class="h1">
+                    0
+                </p>
+            </div>
+        </section>
+        <section class="col-md-4">
+            <div class="shadow-sm p-3 mb-5 bg-white rounded">
+                <h3>Active Bookings</h3>
+                <p class="h1">
+                    0
+                </p>
+            </div>
+        </section>
     </section>
 </div>
 @endsection
