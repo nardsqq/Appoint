@@ -81,7 +81,14 @@
                     <a class="nav-link" href="{{ url('/projects') }}">Projects</a>
                     <a class="nav-link" href="{{ url('/schedules') }}">Schedules</a>
                 </nav>
-                @yield('content')
+                <section class="row justify-content-center">
+                    <section class="col-md-12">
+                        <div class="shadow-sm p-3 mb-3 mt-4 bg-white rounded">
+                            @yield('page-info')
+                        </div>
+                    </section>
+                    @yield('content')
+                </section>
             </div>
         </main>
     </div>
