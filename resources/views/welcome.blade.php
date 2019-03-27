@@ -61,6 +61,12 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            #welcome-link {
+                color: #636b6f;
+                text-decoration: none;
+                font-weight: bold;
+            }
         </style>
     </head>
     <body>
@@ -81,17 +87,11 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Appoint
                 </div>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                <div>
+                    Welcome to <i>Appoint</i>, a lightweight events booking system. <a href="{{ route('register') }}" id="welcome-link" class="text-secondary">Register</a> to book an event or a performer now.
                 </div>
             </div>
         </div>
