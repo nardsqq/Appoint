@@ -15,7 +15,7 @@ class ClientsController extends Controller
      */
     public function index()
     {
-        $clients = Client::paginate(6);
+        $clients = Client::orderBy('created_at', 'DESC')->paginate(5);
 
         return view('clients.index', ['clients' => $clients]);
     }
@@ -38,7 +38,9 @@ class ClientsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $client = Client::create($request->all());
+
+        return redirect()->route('clients.index');
     }
 
     /**
