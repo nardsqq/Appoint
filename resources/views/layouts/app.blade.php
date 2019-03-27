@@ -74,13 +74,20 @@
 
         <main class="py-4">
             <div class="container">
-                <nav class="nav">
-                    <a class="nav-link" href="{{ url('/home') }}">Home</a>
-                    <a class="nav-link" href="{{ url('/clients') }}">Clients</a>
-                    <a class="nav-link" href="{{ url('/project-types') }}">Project Types</a>
-                    <a class="nav-link" href="{{ url('/projects') }}">Projects</a>
-                    <a class="nav-link" href="{{ url('/schedules') }}">Schedules</a>
-                </nav>
+                @if(Auth::user()->role == 0)
+                    <nav class="nav">
+                        <a class="nav-link" href="{{ url('/home') }}">Home</a>
+                        <a class="nav-link" href="{{ url('/clients') }}">Clients</a>
+                        <a class="nav-link" href="{{ url('/project-types') }}">Project Types</a>
+                        <a class="nav-link" href="{{ url('/projects') }}">Projects</a>
+                        <a class="nav-link" href="{{ url('/schedules') }}">Schedules</a>
+                    </nav>
+                @elseif(Auth::user()->role == 1)
+                    <nav class="nav">
+                        <a class="nav-link" href="{{ url('/home') }}">Home</a>
+                        <a class="nav-link" href="{{ url('/schedules') }}">Schedules</a>
+                    </nav>
+                @endif
                 <section class="row justify-content-center">
                     <section class="col-md-12">
                         <div class="shadow-sm p-3 mb-3 mt-4 bg-white rounded">

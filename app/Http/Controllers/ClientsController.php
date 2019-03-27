@@ -4,11 +4,29 @@ namespace Appoint\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
+use Appoint\Http\Controllers\Controller;
 
+use Appoint\User;
 use Appoint\Models\Client;
 
 class ClientsController extends Controller
 {
+    protected $user;
+
+    public function __construct()
+    {
+        $this->middleware(function($request, $next) {
+            $this->user = Auth::user();
+
+            if ($this->user->role == 1) {
+                return redirect()->route('home');
+            }
+
+            return $next($request);
+        });
+    }
+
     /**
      * Display a listing of the resource.
      *
