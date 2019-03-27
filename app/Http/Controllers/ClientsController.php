@@ -3,6 +3,7 @@
 namespace Appoint\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 use Appoint\Models\Client;
 
@@ -17,7 +18,7 @@ class ClientsController extends Controller
     {
         $clients = Client::orderBy('created_at', 'DESC')->paginate(5);
 
-        return view('clients.index', ['clients' => $clients]);
+        return view('clients.index', compact('clients'));
     }
 
     /**
@@ -38,15 +39,7 @@ class ClientsController extends Controller
      */
     public function store(Request $request)
     {
-        Client::create(
-            $request->validate([
-                'name' => 'required|min:3|max:255',
-                'company' => 'required|min:3|max:255',
-                'address' => 'required|min:8|max:255',
-                'email' => 'required|min:3|max:255',
-                'contact' => 'required|min:7|max:11',
-            ])
-        );
+        Client::create($request->validate(Client::$rules));
 
         return redirect()->route('clients.index');
     }
@@ -59,7 +52,7 @@ class ClientsController extends Controller
      */
     public function show(Client $client)
     {
-        return view('clients.view', ['client' => $client]);
+        return view('clients.view', compact('client'));
     }
 
     /**
@@ -70,7 +63,7 @@ class ClientsController extends Controller
      */
     public function edit(Client $client)
     {
-        return view('clients.edit', ['client' => $client]);
+        return view('clients.edit', compact('client'));
     }
 
     /**
@@ -80,9 +73,11 @@ class ClientsController extends Controller
      * @param  Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Client $client)
     {
-        //
+        $client->update($request->validate(Client::$rules));
+
+        return view('clients.view', compact('client'));
     }
 
     /**

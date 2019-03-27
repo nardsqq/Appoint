@@ -17,4 +17,12 @@ class Client extends Model
     {
         return $this->hasMany(Project::class);
     }
+
+    public static $rules = [
+        'name' => 'required|min:3|max:255',
+        'company' => 'required|min:3|max:255',
+        'address' => 'required|min:8|max:255',
+        'email' => 'sometimes|required|email|unique:clients|min:3|max:255',
+        'contact' => 'required|min:7|max:11'
+    ];
 }
