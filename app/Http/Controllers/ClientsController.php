@@ -38,7 +38,15 @@ class ClientsController extends Controller
      */
     public function store(Request $request)
     {
-        $client = Client::create($request->all());
+        Client::create(
+            $request->validate([
+                'name' => 'required|min:3|max:255',
+                'company' => 'required|min:3|max:255',
+                'address' => 'required|min:8|max:255',
+                'email' => 'required|min:3|max:255',
+                'contact' => 'required|min:7|max:11',
+            ])
+        );
 
         return redirect()->route('clients.index');
     }
@@ -46,30 +54,30 @@ class ClientsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  Client $client
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Client $client)
     {
-        //
+        return view('clients.view', ['client' => $client]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Client $client)
     {
-        //
+        return view('clients.edit', ['client' => $client]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Client  $client
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -83,8 +91,10 @@ class ClientsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy(Client $client)
+    {   
+        $client->delete();
+
+        return redirect()->route('clients.index');
     }
 }

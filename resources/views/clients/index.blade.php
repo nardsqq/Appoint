@@ -30,7 +30,6 @@
                     <td class="text-center">
                         <a href="{{ route('clients.edit', $client->id) }}" class="btn btn-primary btn-sm text-light">Edit</a>
                         <a href="{{ route('clients.show', $client->id) }}" class="btn btn-info btn-sm text-light">View</a>
-                        <a href="{{ route('clients.destroy', $client->id) }}" class="btn btn-danger btn-sm text-light">Delete</a>
                     </td>
                 </tr>
             @endforeach
