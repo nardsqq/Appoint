@@ -19,4 +19,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('/clients', 'ClientsController');
+Route::resource('/clients', 'ClientsController')->middleware('auth');
