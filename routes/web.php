@@ -19,5 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('/clients', 'ClientsController')->middleware('auth');
-Route::resource('/event-types', 'EventTypesController')->middleware('auth');
+Route::group(['middleware' => 'auth'], function() {
+    Route::resource('/clients', 'ClientsController');
+    Route::resource('/event-types', 'EventTypesController');
+});

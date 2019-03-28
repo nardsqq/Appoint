@@ -37,7 +37,7 @@
     </table>
     <div>
         <span>
-            Displayed <b>{{ $clients->count() }}</b> records in this page out of <b>{{ $clients->total() }}</b> total records.
+            Displayed <b>{{ $clients->count() }}</b> record(s) in this page out of <b>{{ $clients->total() }}</b> total records.
         </span>
             
         <span class="float-right">
