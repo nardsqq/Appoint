@@ -5,7 +5,7 @@ namespace Appoint\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-use Appoint\Models\Project;
+use Appoint\Models\Event;
 class Client extends Model
 {
     use SoftDeletes;
@@ -13,9 +13,9 @@ class Client extends Model
     protected $guarded = [];
     protected $dates = ['deleted_at'];
 
-    public function projects()
+    public function events()
     {
-        return $this->hasMany(Project::class);
+        return $this->hasMany(Event::class);
     }
 
     public static $rules = [

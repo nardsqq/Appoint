@@ -16,14 +16,14 @@ class CreateSchedulesTable extends Migration
         Schema::create('schedules', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('description');
-            $table->unsignedBigInteger('project_id');
+            $table->unsignedBigInteger('event_id');
             $table->date('start_date');
             $table->date('end_date');
 
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('project_id')->references('id')->on('projects');
+            $table->foreign('event_id')->references('id')->on('events');
         });
     }
 
@@ -35,7 +35,7 @@ class CreateSchedulesTable extends Migration
     public function down()
     {
         Schema::table('schedules', function (Blueprint $table) {
-            $table->dropForeign(['project_id']);
+            $table->dropForeign(['event_id']);
         });
 
         Schema::dropIfExists('schedules');

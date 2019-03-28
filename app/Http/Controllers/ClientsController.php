@@ -3,7 +3,6 @@
 namespace Appoint\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 use Appoint\Http\Controllers\Controller;
 
