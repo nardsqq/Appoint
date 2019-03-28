@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSchedulesTable extends Migration
+class CreateBookingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateSchedulesTable extends Migration
      */
     public function up()
     {
-        Schema::create('schedules', function (Blueprint $table) {
+        Schema::create('bookings', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('description');
             $table->unsignedBigInteger('event_id');
@@ -36,10 +36,10 @@ class CreateSchedulesTable extends Migration
      */
     public function down()
     {
-        Schema::table('schedules', function (Blueprint $table) {
+        Schema::table('bookings', function (Blueprint $table) {
             $table->dropForeign(['event_id', 'user_id']);
         });
 
-        Schema::dropIfExists('schedules');
+        Schema::dropIfExists('bookings');
     }
 }

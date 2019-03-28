@@ -80,12 +80,12 @@
                         <a class="nav-link" href="{{ url('/clients') }}">Clients</a>
                         <a class="nav-link" href="{{ url('/event-types') }}">Event Types</a>
                         <a class="nav-link" href="{{ url('/events') }}">Events</a>
-                        <a class="nav-link" href="{{ url('/schedules') }}">Schedules</a>
+                        <a class="nav-link" href="{{ url('/bookings') }}">Bookings</a>
                     </nav>
                 @elseif(Auth::user()->role == 1)
                     <nav class="nav">
                         <a class="nav-link" href="{{ url('/home') }}">Home</a>
-                        <a class="nav-link" href="{{ url('/schedules') }}">Schedules</a>
+                        <a class="nav-link" href="{{ url('/bookings') }}">Bookings</a>
                     </nav>
                 @endif
                 <section class="row justify-content-center">
