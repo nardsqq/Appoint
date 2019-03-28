@@ -22,4 +22,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => 'auth'], function() {
     Route::resource('/clients', 'ClientsController');
     Route::resource('/event-types', 'EventTypesController');
+    Route::resource('/events', 'EventsController');
 });

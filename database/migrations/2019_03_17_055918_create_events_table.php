@@ -17,7 +17,7 @@ class CreateEventsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->text('description')->nullable();
-            $table->decimal('budget', 19, 4);
+            $table->decimal('budget', 19, 2);
             $table->unsignedBigInteger('event_type_id');
             $table->unsignedBigInteger('client_id');
             $table->unsignedTinyInteger('status');

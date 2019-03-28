@@ -5,7 +5,10 @@ namespace Appoint\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-use Appoint\Models\EventType;
+use Appoint\Models\{
+    Client,
+    EventType
+};
 
 class Event extends Model
 {
@@ -14,8 +17,22 @@ class Event extends Model
     protected $guarded = [];
     protected $dates = ['deleted_at'];
     
-    public function eventTypes()
+    public function client()
     {
-        return $this->hasMany(EventType::class);
+        return $this->belongsTo(Client::class);
     }
+
+    public function eventType()
+    {
+        return $this->belongsTo(EventType::class);
+    }
+
+    // public static $rules = [
+    //     'name' => 'required|unique:events|min:3|max:255',
+    //     'event_type_id' => 'required',
+    //     'client_id' => 'required',
+    //     'description' => 'required|min:3|max:255',
+    //     'budget' => 'required',
+    //     'status' => 'required'
+    // ];
 }
