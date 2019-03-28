@@ -27,12 +27,13 @@ class Event extends Model
         return $this->belongsTo(EventType::class);
     }
 
-    // public static $rules = [
-    //     'name' => 'required|unique:events|min:3|max:255',
-    //     'event_type_id' => 'required',
-    //     'client_id' => 'required',
-    //     'description' => 'required|min:3|max:255',
-    //     'budget' => 'required',
-    //     'status' => 'required'
-    // ];
+    public static $rules = [
+        'name' => 'required|unique:events|min:3|max:255',
+        'event_type_id' => 'required',
+        'client_id' => 'required',
+        'description' => 'required|min:3|max:255',
+        'budget' => 'required',
+        'status' => 'required',
+        'venue' => 'required|min:3|max:255'
+    ];
 }

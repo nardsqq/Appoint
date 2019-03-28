@@ -44,11 +44,7 @@ class EventsController extends Controller
      */
     public function store(Request $request)
     {
-        $event_type = EventType::find($request->event_type_id);
-
-        $event = Event::create($request->all());
-
-        $event->eventType()->associate($event_type);
+        $event = Event::create($request->validate(Event::$rules));
 
         return redirect()->route('events.index');
     }
@@ -56,45 +52,58 @@ class EventsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  Event $event
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Event $event)
     {
-        //
+        $client = Client::find($event->client_id);
+        $event_type = EventType::find($event->event_type_id);
+
+        return view('events.view', compact('event', 'event_type', 'client'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Event $event
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Event $event)
     {
-        //
+        $clients = Client::all();
+        $event_types = EventType::all();
+
+        return view('events.edit', compact('event', 'event_types', 'clients'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Event $event
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Event $event)
     {
-        //
+        $client = Client::find($event->client_id);
+        $event_type = EventType::find($event->event_type_id);
+
+        $event->update($request->all());
+
+        return view('events.view', compact('event', 'event_type', 'client'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Event $event
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Event $event)
     {
-        //
+        $event->delete();
+
+        return redirect()->route('events.index');
     }
 }
