@@ -53,12 +53,15 @@ class BookingsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  Booking $booking
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Booking $booking)
     {
-        //
+        $event = Event::find($booking->event_id);
+        $performer = User::find($booking->user_id);
+
+        return view('bookings.view', compact('booking', 'event', 'performer'));
     }
 
     /**
@@ -79,12 +82,17 @@ class BookingsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Booking $booking
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Booking $booking)
     {
-        //
+        $event = Event::find($booking->event_id);
+        $performer = User::find($booking->user_id);
+
+        $booking->update($request->all());
+
+        return view('bookings.view', compact('booking', 'event', 'performer'));
     }
 
     /**
@@ -93,8 +101,10 @@ class BookingsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Booking $booking)
     {
-        //
+        $booking->delete();
+
+        return redirect()->route('bookings.index');
     }
 }

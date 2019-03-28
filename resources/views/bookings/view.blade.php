@@ -3,8 +3,8 @@
 @section('content')
 
 @section('page-info')
-    View specified <b>Event</b> record.
-    <a href="{{ route('events.index') }}" class="float-right text-dark"><< Return to the Events page</a>
+    View specified <b>Booking</b>.
+    <a href="{{ route('bookings.index') }}" class="float-right text-dark"><< Return to the Bookings page</a>
 @endsection
 
 <section class="col-md-6 my-3">
@@ -19,39 +19,48 @@
                     </ul>
                 </div>
             @endif
-            <form method="POST" action="/events/{{ $event->id }}">
-
+            <form method="POST" action="/bookings/{{ $booking->id }}">
+                
                 @method('DELETE')
-                @csrf
+                @csrf 
 
                 <div class="form-group">
-                    <label for="client_id">Client</label>
-                    <select name="client_id" id="client_id" class="form-control" disabled>
-                        <option value="{{ $client->id }}">
-                            {{ $client->company }} - {{ $client->name }}
-                        </option>                     
+                    <label for="event_id">Event</label>
+                    <select name="event_id" id="event_id" class="form-control" disabled>
+                        <option value="{{ $event->id }}">{{ $event->name }}</option>          
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="event_type_id">Event Type</label>
-                    <select name="event_type_id" id="event_type_id" class="form-control" disabled>
-                        <option value="{{ $event_type->id }}">
-                            {{ $event_type->name }}
-                        </option>
+                    <label for="user_id">Performer</label>
+                    <select name="user_id" id="user_id" class="form-control" disabled>
+                        <option value="{{ $performer->id }}">{{ $performer->name }}</option>                                  
                     </select>
                 </div>
 
                 <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="description">Booking Description</label>
+                            <textarea 
+                                name="description" 
+                                id="description" 
+                                cols="30" rows="5" 
+                                class="form-control"
+                                placeholder="Booking Details"
+                                disabled
+                            >{{ $booking->description }}</textarea>
+                        </div>
+                    </div>
+                
+                <div class="form-row">
                     <div class="form-group col-md-12">
-                        <label for="name">Event Name</label>
+                        <label for="start_date">Start Date</label>
                         <input 
-                            type="text" 
+                            type="date" 
                             class="form-control"
-                            name="name"
-                            id="name"
-                            placeholder="Event Title or Name"
-                            value="{{ $event->name }}"
+                            name="start_date"
+                            id="start_date"
+                            value="{{ $booking->start_date->format('Y-m-d') }}"
                             disabled
                         >
                     </div>
@@ -59,59 +68,20 @@
                 
                 <div class="form-row">
                     <div class="form-group col-md-12">
-                        <label for="venue">Venue</label>
+                        <label for="end_date">End Date</label>
                         <input 
-                            type="text" 
+                            type="date" 
                             class="form-control"
-                            name="venue"
-                            id="venue"
-                            placeholder="Designated Venue"
-                            value="{{ $event->venue }}"
+                            name="end_date"
+                            id="end_date"
+                            value="{{ $booking->end_date->format('Y-m-d') }}"
                             disabled
                         >
                     </div>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-group col-md-12">
-                        <label for="description">Description</label>
-                        <textarea 
-                            name="description" 
-                            id="description" 
-                            cols="30" rows="5" 
-                            class="form-control"
-                            placeholder="Full Event Details"
-                            disabled
-                        >{{ $event->description }}</textarea>
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group col-md-12">
-                        <label for="budget">Budget</label>
-                        <input 
-                            type="number" 
-                            class="form-control"
-                            name="budget"
-                            id="budget"
-                            placeholder="Alloted Budget for the Event"
-                            value="{{ $event->budget }}"
-                            disabled
-                        >
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="status">Status</label>
-                    <select name="status" id="status" class="form-control" disabled>
-                        @if ($event->status == 0)
-                            <option value="0" selected>New</option>
-                        @endif       
-                    </select>
                 </div>
 
                 <span class="float-right">
-                    <a href="{{ route('events.edit', $event->id) }}" class="btn btn-info text-light">Edit</a>
+                    <a href="{{ route('bookings.edit', $booking->id) }}" class="btn btn-info text-light">Edit</a>
                     <button type="submit" class="btn btn-danger">Delete</button>
                 </span>
             </form>
