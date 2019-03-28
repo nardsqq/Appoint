@@ -17,6 +17,7 @@ class CreateSchedulesTable extends Migration
             $table->bigIncrements('id');
             $table->text('description');
             $table->unsignedBigInteger('event_id');
+            $table->unsignedBigInteger('user_id');
             $table->date('start_date');
             $table->date('end_date');
 
@@ -24,6 +25,7 @@ class CreateSchedulesTable extends Migration
             $table->softDeletes();
 
             $table->foreign('event_id')->references('id')->on('events');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -35,7 +37,7 @@ class CreateSchedulesTable extends Migration
     public function down()
     {
         Schema::table('schedules', function (Blueprint $table) {
-            $table->dropForeign(['event_id']);
+            $table->dropForeign(['event_id', 'user_id']);
         });
 
         Schema::dropIfExists('schedules');
