@@ -13,11 +13,11 @@ class Booking extends Model
     use SoftDeletes;
 
     protected $guarded = [];
-    protected $dates = ['deleted_at'];
+    protected $dates = ['start_date', 'end_date', 'deleted_at'];
     
-    public function users()
+    public function user()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function event()

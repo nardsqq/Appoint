@@ -23,8 +23,8 @@
                 @csrf
 
                 <div class="form-group">
-                    <label for="client_id">Event</label>
-                    <select name="client_id" id="client_id" class="form-control">
+                    <label for="event_id">Event</label>
+                    <select name="event_id" id="event_id" class="form-control">
                         @foreach ($events as $event)
                             <option value="{{ $event->id }}">{{ $event->name }}</option>        
                         @endforeach                            
@@ -32,72 +32,50 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="event_type_id">Event Type</label>
-                    <select name="event_type_id" id="event_type_id" class="form-control">
-                        @foreach ($event_types as $event_type)
-                            <option value="{{ $event_type->id }}">{{ $event_type->name }}</option>        
+                    <label for="user_id">Performer</label>
+                    <select name="user_id" id="user_id" class="form-control">
+                        @foreach ($performers as $performer)
+                            <option value="{{ $performer->id }}">{{ $performer->name }}</option>        
                         @endforeach                            
                     </select>
                 </div>
 
                 <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="description">Booking Description</label>
+                            <textarea 
+                                name="description" 
+                                id="description" 
+                                cols="30" rows="5" 
+                                class="form-control"
+                                placeholder="Booking Details"
+                            >
+                            </textarea>
+                        </div>
+                    </div>
+                
+                <div class="form-row">
                     <div class="form-group col-md-12">
-                        <label for="name">Event Name</label>
+                        <label for="start_date">Start Date</label>
                         <input 
-                            type="text" 
+                            type="date" 
                             class="form-control"
-                            name="name"
-                            id="name"
-                            placeholder="Event Title or Name"
+                            name="start_date"
+                            id="start_date"
                         >
                     </div>
                 </div>
                 
                 <div class="form-row">
                     <div class="form-group col-md-12">
-                        <label for="venue">Venue</label>
+                        <label for="end_date">End Date</label>
                         <input 
-                            type="text" 
+                            type="date" 
                             class="form-control"
-                            name="venue"
-                            id="venue"
-                            placeholder="Designated Venue"
+                            name="end_date"
+                            id="end_date"
                         >
                     </div>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-group col-md-12">
-                        <label for="description">Description</label>
-                        <textarea 
-                            name="description" 
-                            id="description" 
-                            cols="30" rows="5" 
-                            class="form-control"
-                            placeholder="Full Event Details"
-                        >
-                        </textarea>
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group col-md-12">
-                        <label for="budget">Budget</label>
-                        <input 
-                            type="number" 
-                            class="form-control"
-                            name="budget"
-                            id="budget"
-                            placeholder="Alloted Budget for the Event"
-                        >
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="status">Status</label>
-                    <select name="status" id="status" class="form-control">
-                        <option value="0" selected>New</option>                                
-                    </select>
                 </div>
 
                 <button type="submit" class="btn btn-success float-right">Submit</button>

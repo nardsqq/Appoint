@@ -5,7 +5,10 @@ namespace Appoint\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Appoint\User;
-use Appoint\Models\Booking;
+use Appoint\Models\{
+    Booking,
+    Event
+};
 
 class BookingsController extends Controller
 {
@@ -28,7 +31,10 @@ class BookingsController extends Controller
      */
     public function create()
     {
-        return view('bookings.create');
+        $events = Event::all();
+        $performers = User::where('role', 1)->get();
+
+        return view('bookings.create', compact('events', 'performers'));
     }
 
     /**
@@ -39,7 +45,9 @@ class BookingsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Booking::create($request->all());
+
+        return redirect()->route('bookings.index');
     }
 
     /**
@@ -56,12 +64,15 @@ class BookingsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Booking $booking
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Booking $booking)
     {
-        //
+        $events = Event::all();
+        $performers = User::where('role', 1)->get();
+
+        return view('bookings.edit', compact('booking', 'events', 'performers'));
     }
 
     /**

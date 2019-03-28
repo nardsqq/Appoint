@@ -25,8 +25,8 @@
                 <tr>
                     <td>{{ $booking->event->name }}</td>
                     <td>{{ $booking->description }}</td>
-                    <td>{{ $booking->start_date }}</td>
-                    <td>{{ $booking->end_date }}</td>
+                    <td>{{ $booking->start_date->format('F d, Y') }}</td>
+                    <td>{{ $booking->end_date->format('F d, Y') }}</td>
                     <td class="text-center">
                         <a href="{{ route('bookings.edit', $booking->id) }}" class="btn btn-primary btn-sm text-light">Edit</a>
                         <a href="{{ route('bookings.show', $booking->id) }}" class="btn btn-info btn-sm text-light">View</a>
