@@ -28,7 +28,7 @@
                     <td>{{ $event->client->name }}</td>
                     <td>{{ $event->eventType->name }}</td>
                     <td>{{ $event->name }}</td>
-                    <td>{{ $event->venue }}</td>
+                    <td>{{ str_limit($event->venue, $limit = 30, $end = '...') }}</td>
                     <td>{{ str_limit($event->description, $limit = 30, $end = '...') }}</td>
                     <td>PHP {{ $event->budget }}</td>
                     <td class="text-center">
