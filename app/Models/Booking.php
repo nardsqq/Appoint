@@ -24,4 +24,10 @@ class Booking extends Model
     {
         return $this->belongsTo(Event::class);
     }
+
+    public static $rules = [
+        'description' => 'required|min:3|max:255',
+        'start_date' => 'required',
+        'end_date' => 'required'
+    ];
 }

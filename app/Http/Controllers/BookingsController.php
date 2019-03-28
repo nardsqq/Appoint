@@ -50,7 +50,7 @@ class BookingsController extends Controller
      */
     public function store(Request $request)
     {
-        Booking::create($request->all());
+        Booking::create($request->validate(Booking::$rules));
 
         return redirect()->route('bookings.index');
     }
