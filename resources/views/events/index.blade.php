@@ -7,9 +7,12 @@
 @endsection
 
 <section class="col-md-12">
-    <div class="float-right my-3">
-        <a href="{{ route('events.create') }}" class="btn btn-success">Create Event</a>
-    </div>
+    @if (Auth::user()->role == 0)
+        <div class="float-right my-3">
+            <a href="{{ route('events.create') }}" class="btn btn-success">Create Event</a>
+        </div>
+    @elseif (Auth::user()->role == 1)
+    @endif
     <table class="table table-bordered table-hover">
         <thead class="thead-light">
             <tr>
@@ -19,7 +22,10 @@
                 <th scope="col">Venue</th>
                 <th scope="col">Description</th>
                 <th scope="col">Budget</th>
-                <th scope="col" class="text-center">Actions</th>
+                @if (Auth::user()->role == 0)
+                    <th scope="col" class="text-center">Actions</th>
+                @elseif (Auth::user()->role == 1)
+                @endif
             </tr>
         </thead>
         <tbody>
@@ -31,10 +37,13 @@
                     <td>{{ str_limit($event->venue, $limit = 30, $end = '...') }}</td>
                     <td>{{ str_limit($event->description, $limit = 30, $end = '...') }}</td>
                     <td>PHP {{ $event->budget }}</td>
-                    <td class="text-center">
-                        <a href="{{ route('events.edit', $event->id) }}" class="btn btn-primary btn-sm text-light">Edit</a>
-                        <a href="{{ route('events.show', $event->id) }}" class="btn btn-info btn-sm text-light">View</a>
-                    </td>
+                    @if (Auth::user()->role == 0)
+                        <td class="text-center">
+                            <a href="{{ route('events.edit', $event->id) }}" class="btn btn-primary btn-sm text-light">Edit</a>
+                            <a href="{{ route('events.show', $event->id) }}" class="btn btn-info btn-sm text-light">View</a>
+                        </td>
+                    @elseif (Auth::user()->role == 1)
+                    @endif
                 </tr>
             @endforeach
         </tbody>
