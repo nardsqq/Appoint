@@ -95,7 +95,7 @@ class BookingsController extends Controller
         $event = Event::find($booking->event_id);
         $performer = User::find($booking->user_id);
 
-        $booking->update($request->all());
+        $booking->update($request->validate(Booking::$rules));
 
         return view('bookings.view', compact('booking', 'event', 'performer'));
     }
