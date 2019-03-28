@@ -3,7 +3,7 @@
 @section('content')
 
 @section('page-info')
-    Welcome to the <strong>Bookings</strong> page, manage and monitor your <i>Booking</i> records here.
+    Welcome to the <strong>Bookings</strong> page, manage and monitor your <i>bookings</i> here.
 @endsection
 
 <section class="col-md-12">

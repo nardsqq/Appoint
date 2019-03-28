@@ -3,7 +3,7 @@
 @section('content')
 
 @section('page-info')
-    Welcome to the <strong>Events</strong> page, manage and monitor your <i>Event</i> records here.
+    Welcome to the <strong>Events</strong> page, manage and monitor your <i>events</i> here.
 @endsection
 
 <section class="col-md-12">
