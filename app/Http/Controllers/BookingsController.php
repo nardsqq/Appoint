@@ -3,6 +3,7 @@
 namespace Appoint\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 use Appoint\User;
 use Appoint\Models\{
@@ -19,7 +20,11 @@ class BookingsController extends Controller
      */
     public function index()
     {
-        $bookings = Booking::orderBy('created_at', 'DESC')->paginate(5);
+        if (Auth::user()->role == 0) {
+            $bookings = Booking::orderBy('created_at', 'DESC')->paginate(5);
+        } else if (Auth::user()->role == 1) {
+            $bookings = Booking::where('user_id', Auth::id())->orderBy('created_at', 'DESC')->paginate(5);
+        }
         
         return view('bookings.index', compact('bookings'));
     }

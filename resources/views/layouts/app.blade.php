@@ -85,7 +85,7 @@
                 @elseif(Auth::user()->role == 1)
                     <nav class="nav">
                         <a class="nav-link" href="{{ url('/home') }}">Home</a>
-                        <a class="nav-link" href="{{ url('/bookings') }}">Bookings</a>
+                        <a class="nav-link" href="{{ url('/bookings') }}">My Bookings</a>
                     </nav>
                 @endif
                 <section class="row justify-content-center">
