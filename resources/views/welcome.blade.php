@@ -91,7 +91,7 @@
                 </div>
 
                 <div>
-                    Welcome to <i>Appoint</i>, a lightweight events booking system. <a href="{{ route('register') }}" id="welcome-link" class="text-secondary">Register</a> to book an event or a performer now.
+                    Welcome to <i>Appoint</i>, a lightweight events booking system. <a href="{{ route('register') }}" id="welcome-link" class="text-secondary">Register</a> now.
                 </div>
             </div>
         </div>
