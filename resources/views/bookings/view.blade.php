@@ -1,0 +1,122 @@
+@extends('layouts.app')
+
+@section('content')
+
+@section('page-info')
+    View specified <b>Event</b> record.
+    <a href="{{ route('events.index') }}" class="float-right text-dark"><< Return to the Events page</a>
+@endsection
+
+<section class="col-md-6 my-3">
+    <div class="card">
+        <div class="card-body">
+            @if($errors->any())
+                <div class="alert alert-danger">    
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            <form method="POST" action="/events/{{ $event->id }}">
+
+                @method('DELETE')
+                @csrf
+
+                <div class="form-group">
+                    <label for="client_id">Client</label>
+                    <select name="client_id" id="client_id" class="form-control" disabled>
+                        <option value="{{ $client->id }}">
+                            {{ $client->company }} - {{ $client->name }}
+                        </option>                     
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="event_type_id">Event Type</label>
+                    <select name="event_type_id" id="event_type_id" class="form-control" disabled>
+                        <option value="{{ $event_type->id }}">
+                            {{ $event_type->name }}
+                        </option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label for="name">Event Name</label>
+                        <input 
+                            type="text" 
+                            class="form-control"
+                            name="name"
+                            id="name"
+                            placeholder="Event Title or Name"
+                            value="{{ $event->name }}"
+                            disabled
+                        >
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label for="venue">Venue</label>
+                        <input 
+                            type="text" 
+                            class="form-control"
+                            name="venue"
+                            id="venue"
+                            placeholder="Designated Venue"
+                            value="{{ $event->venue }}"
+                            disabled
+                        >
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label for="description">Description</label>
+                        <textarea 
+                            name="description" 
+                            id="description" 
+                            cols="30" rows="5" 
+                            class="form-control"
+                            placeholder="Full Event Details"
+                            disabled
+                        >{{ $event->description }}</textarea>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label for="budget">Budget</label>
+                        <input 
+                            type="number" 
+                            class="form-control"
+                            name="budget"
+                            id="budget"
+                            placeholder="Alloted Budget for the Event"
+                            value="{{ $event->budget }}"
+                            disabled
+                        >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="status">Status</label>
+                    <select name="status" id="status" class="form-control" disabled>
+                        @if ($event->status == 0)
+                            <option value="0" selected>New</option>
+                        @endif       
+                    </select>
+                </div>
+
+                <span class="float-right">
+                    <a href="{{ route('events.edit', $event->id) }}" class="btn btn-info text-light">Edit</a>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </span>
+            </form>
+        </div>
+    </div>
+</section>
+
+@endsection
