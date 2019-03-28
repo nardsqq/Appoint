@@ -22,10 +22,7 @@
                 <th scope="col">Venue</th>
                 <th scope="col">Description</th>
                 <th scope="col">Budget</th>
-                @if (Auth::user()->role == 0)
-                    <th scope="col" class="text-center">Actions</th>
-                @elseif (Auth::user()->role == 1)
-                @endif
+                <th scope="col" class="text-center">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -43,6 +40,9 @@
                             <a href="{{ route('events.show', $event->id) }}" class="btn btn-info btn-sm text-light">View</a>
                         </td>
                     @elseif (Auth::user()->role == 1)
+                        <td class="text-center">
+                            <a href="{{ route('events.show', $event->id) }}" class="btn btn-info btn-sm text-light">View</a>
+                        </td>
                     @endif
                 </tr>
             @endforeach
