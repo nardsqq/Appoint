@@ -4,6 +4,8 @@ namespace Appoint\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Appoint\User;
+
 class HomeController extends Controller
 {
     /**
@@ -23,6 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $performers = User::where('role', 1)->get();
+
+        return view('home', compact('performers'));
     }
 }
