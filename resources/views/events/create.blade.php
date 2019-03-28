@@ -52,7 +52,20 @@
                         >
                     </div>
                 </div>
-
+                
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label for="venue">Venue</label>
+                        <input 
+                            type="text" 
+                            class="form-control"
+                            name="venue"
+                            id="venue"
+                            placeholder="Designated Venue"
+                        >
+                    </div>
+                </div>
+                
                 <div class="form-row">
                     <div class="form-group col-md-12">
                         <label for="description">Description</label>

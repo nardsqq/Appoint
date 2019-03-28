@@ -16,6 +16,7 @@
                 <th scope="col">Client</th>
                 <th scope="col">Event Type</th>
                 <th scope="col">Name</th>
+                <th scope="col">Venue</th>
                 <th scope="col">Description</th>
                 <th scope="col">Budget</th>
                 <th scope="col" class="text-center">Actions</th>
@@ -27,7 +28,8 @@
                     <td>{{ $event->client->name }}</td>
                     <td>{{ $event->eventType->name }}</td>
                     <td>{{ $event->name }}</td>
-                    <td>{{ $event->description }}</td>
+                    <td>{{ $event->venue }}</td>
+                    <td>{{ str_limit($event->description, $limit = 30, $end = '...') }}</td>
                     <td>PHP {{ $event->budget }}</td>
                     <td class="text-center">
                         <a href="{{ route('events.edit', $event->id) }}" class="btn btn-primary btn-sm text-light">Edit</a>
