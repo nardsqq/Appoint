@@ -3,7 +3,7 @@
 @section('content')
 
 @section('page-info')
-    Welcome to <strong>Appoint</strong>, a lightweight events booking system. <a href="#" class="text-secondary">
+    Welcome to <strong>Appoint</strong>, a lightweight events booking system. <a href="#" class="text-secondary"><strong>Create</strong></a> an event now.
 @endsection
 
 <section class="col-md-4">
