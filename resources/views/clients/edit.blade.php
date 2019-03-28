@@ -20,6 +20,7 @@
                 </div>
             @endif
             <form method="POST" action="/clients/{{ $client->id }}">
+                
                 @method('PUT')
                 @csrf
 

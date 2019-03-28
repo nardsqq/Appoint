@@ -3,44 +3,43 @@
 @section('content')
 
 @section('page-info')
-    View specified <b>Client</b> record.
-    <a href="{{ route('clients.index') }}" class="float-right text-dark"><< Return to the Clients page</a>
+    View specified <b>Event Type</b> record.
+    <a href="{{ route('event-types.index') }}" class="float-right text-dark"><< Return to the Event Types page</a>
 @endsection
 
-<section class="col-md-9 my-3">
+<section class="col-md-6 my-3">
     <div class="card">
         <div class="card-body">
-            <form method="POST" action="/clients/{{ $client->id }}">
-
+            @if($errors->any())
+                <div class="alert alert-danger">    
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            <form method="POST" action="/event-types/{{ $event_type->id }}">
+                
                 @method('DELETE')
                 @csrf
-                
+
                 <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control" name="name" id="name" value="{{ $client->name }}" disabled>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="company">Company</label>
-                        <input type="text" class="form-control" name="company" id="company" value="{{ $client->company }}" disabled>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="address">Address</label>
-                    <input type="text" class="form-control" name="address" id="address" value="{{ $client->address }}" disabled>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control" name="email" id="email" value="{{ $client->email }}" disabled>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="contact">Contact Number</label>
-                        <input type="text" class="form-control" name="contact" id="contact" value="{{ $client->contact }}" disabled>
+                    <div class="form-group col-md-12">
+                        <label for="name">Event Type</label>
+                        <input 
+                            type="text" 
+                            class="form-control {{ $errors->has('name') ? 'border border-danger' : '' }}" 
+                            name="name" 
+                            id="name" 
+                            placeholder="Event Type Name"
+                            value="{{ $event_type->name }}"
+                            disabled
+                        >
                     </div>
                 </div>
                 <span class="float-right">
-                    <a href="{{ route('clients.edit', $client->id) }}" class="btn btn-info text-light">Edit</a>
+                    <a href="{{ route('event-types.edit', $event_type->id) }}" class="btn btn-info text-light">Edit</a>
                     <button type="submit" class="btn btn-danger">Delete</button>
                 </span>
             </form>

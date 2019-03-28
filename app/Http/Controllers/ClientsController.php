@@ -100,7 +100,7 @@ class ClientsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Client $client
      * @return \Illuminate\Http\Response
      */
     public function destroy(Client $client)

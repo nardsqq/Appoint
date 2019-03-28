@@ -38,41 +38,45 @@ class EventTypesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        EventType::create($request->validate(EventType::$rules));
+
+        return redirect()->route('event-types.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  EventType $event_type
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(EventType $event_type)
     {
-        //
+        return view('event_types.view', compact('event_type'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  EventType $event_type
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(EventType $event_type)
     {
-        //
+        return view('event_types.edit', compact('event_type'));        
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  EventType $event_type
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, EventType $event_type)
     {
-        //
+        $event_type->update($request->validate(EventType::$rules));
+
+        return view('event_types.view', compact('event_type'));
     }
 
     /**
@@ -81,8 +85,10 @@ class EventTypesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(EventType $event_type)
     {
-        //
+        $event_type->delete();
+
+        return redirect()->route('event-types.index');
     }
 }

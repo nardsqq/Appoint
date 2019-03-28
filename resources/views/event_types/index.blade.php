@@ -38,8 +38,6 @@
             {{ $event_types->links() }}
         </span>
     </div>
-    
 </section>
-
 
 @endsection
