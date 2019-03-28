@@ -80,10 +80,14 @@
                     </div>
                 </div>
 
-                <span class="float-right">
-                    <a href="{{ route('bookings.edit', $booking->id) }}" class="btn btn-info text-light">Edit</a>
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                </span>
+                @if (Auth::user()->role == 0)
+                    <span class="float-right">
+                        <a href="{{ route('bookings.edit', $booking->id) }}" class="btn btn-info text-light">Edit</a>
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </span>
+                @elseif (Auth::user()->role == 1)
+                @endif
+                
             </form>
         </div>
     </div>
