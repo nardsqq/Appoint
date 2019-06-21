@@ -84,11 +84,23 @@
                     <div class="form-group col-md-12">
                         <label for="budget">Budget</label>
                         <input 
-                            type="number" 
+                            type="text" 
                             class="form-control"
                             name="budget"
                             id="budget"
                             placeholder="Alloted Budget for the Event"
+                        >
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label for="budget">Date and Time</label>
+                        <input 
+                            type="datetime-local" 
+                            class="form-control"
+                            name="date_time"
+                            id="date_time"
                         >
                     </div>
                 </div>

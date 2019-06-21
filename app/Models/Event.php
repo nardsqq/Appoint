@@ -15,7 +15,7 @@ class Event extends Model
     use SoftDeletes;
 
     protected $guarded = [];
-    protected $dates = ['deleted_at'];
+    protected $dates = ['deleted_at', 'date_time'];
     
     public function client()
     {
@@ -32,8 +32,9 @@ class Event extends Model
         'event_type_id' => 'required',
         'client_id' => 'required',
         'description' => 'required|min:3|max:255',
-        'budget' => 'required',
+        'budget' => 'required|digits_between:0,100000000000',
         'status' => 'required',
-        'venue' => 'required|min:3|max:255'
+        'venue' => 'required|min:3|max:255',
+        'date_time' => 'required'
     ];
 }

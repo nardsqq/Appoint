@@ -59,7 +59,7 @@ class EventsController extends Controller
     {
         $client = Client::find($event->client_id);
         $event_type = EventType::find($event->event_type_id);
-
+        
         return view('events.view', compact('event', 'event_type', 'client'));
     }
 
