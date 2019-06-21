@@ -93,6 +93,18 @@
                     </div>
                 </div>
 
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label for="budget">Date and Time</label>
+                        <input 
+                            type="datetime-local" 
+                            class="form-control"
+                            name="date_time"
+                            id="date_time"
+                        >
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <label for="status">Status</label>
                     <select name="status" id="status" class="form-control">

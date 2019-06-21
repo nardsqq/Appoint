@@ -101,6 +101,20 @@
                     </div>
                 </div>
 
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label for="budget">Date and Time</label>
+                        <input 
+                            type="text" 
+                            class="form-control"
+                            name="date_time"
+                            id="date_time"
+                            value="{{ $event->date_time->format('M d Y H:i:s') }}"
+                            disabled
+                        >
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <label for="status">Status</label>
                     <select name="status" id="status" class="form-control" disabled>

@@ -19,6 +19,7 @@ class CreateEventsTable extends Migration
             $table->text('description')->nullable();
             $table->decimal('budget', 19, 2);
             $table->string('venue');
+            $table->dateTime('date_time');
             $table->unsignedBigInteger('event_type_id');
             $table->unsignedBigInteger('client_id');
             $table->unsignedTinyInteger('status');
