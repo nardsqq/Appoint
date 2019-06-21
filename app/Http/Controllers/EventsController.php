@@ -44,6 +44,7 @@ class EventsController extends Controller
      */
     public function store(Request $request)
     {
+        // \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $request->date_time);
         $event = Event::create($request->validate(Event::$rules));
 
         return redirect()->route('events.index');
