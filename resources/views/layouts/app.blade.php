@@ -60,11 +60,11 @@
                                     >
                                         {{ __('Logout') }}
                                     </a>
-                                    
+                                    @if(Auth::user()->role == 1)
                                     <a class="dropdown-item" href="{{ url('/resume/create') }}">
                                         Upload Resume
                                     </a>
-
+                                    @endif
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
@@ -85,6 +85,7 @@
                         <a class="nav-link" href="{{ url('/event-types') }}">Event Types</a>
                         <a class="nav-link" href="{{ url('/events') }}">Events</a>
                         <a class="nav-link" href="{{ url('/bookings') }}">Bookings</a>
+                        <a class="nav-link" href="{{ url('/performers') }}">Performers</a>
                     </nav>
                 @elseif(Auth::user()->role == 1)
                     <nav class="nav">

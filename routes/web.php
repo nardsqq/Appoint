@@ -25,4 +25,5 @@ Route::group(['middleware' => 'auth'], function() {
     Route::resource('/events', 'EventsController');
     Route::resource('/bookings', 'BookingsController');
     Route::resource('/resume', 'ResumeController');
+    Route::resource('/performers', 'PerformerController');
 });
