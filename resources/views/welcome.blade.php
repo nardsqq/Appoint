@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Even Man Production - BMS</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -87,11 +87,11 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Appoint
+                    Even Man Production - BMS
                 </div>
 
                 <div>
-                    Welcome to <i>Appoint</i>, a lightweight events booking system. <a href="{{ route('register') }}" id="welcome-link" class="text-secondary">Register</a> now.
+                    Welcome to <i>Even Man Production - BMS</i>, a lightweight events booking system. <a href="{{ route('register') }}" id="welcome-link" class="text-secondary">Register</a> now.
                 </div>
             </div>
         </div>

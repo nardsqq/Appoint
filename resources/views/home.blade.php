@@ -4,9 +4,9 @@
 
 @section('page-info')
     @if (Auth::user()->role == 0)
-        Welcome to <strong>Appoint</strong>, a lightweight events booking system. <a href="{{ url('/events') }}" class="text-secondary"><strong>Create</strong></a> an event now.
+        Welcome to <strong>Even Man Production - BMS</strong>, a lightweight events booking system. <a href="{{ url('/events') }}" class="text-secondary"><strong>Create</strong></a> an event now.
     @elseif (Auth::user()->role == 1)
-        Welcome to <strong>Appoint</strong>, a lightweight events booking system. <a href="{{ url('/bookings') }}" class="text-secondary"><strong>Check</strong></a> your bookings now.
+        Welcome to <strong>Even Man Production - BMS</strong>, a lightweight events booking system. <a href="{{ url('/bookings') }}" class="text-secondary"><strong>Check</strong></a> your bookings now.
     @endif
 @endsection
 
