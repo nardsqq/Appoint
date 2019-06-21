@@ -21,19 +21,19 @@
             <form method="POST" action="/resume" enctype="multipart/form-data">
                 @csrf
 
-                <div class="form-row">
-                <img src="{{ url('storage/'.Auth::user()->resume) }}" alt="" width= "20%" height="20%" />
-                    <div class="form-group col-md-12">
-                        <label for="name">Upload Resume</label>
-                        <input 
-                            type="file" 
-                            name="resume"
-                            placeholder="Choose Resume"
-                        >
-                        <input type="hidden" value="{{ Auth::user()->id }}" name="id"/>
-                    </div>
+                <div class="form-group">
+                    <label for="name">Upload Resume</label>
+                    
+                    <input 
+                        type="file" 
+                        name="resume"
+                        placeholder="Choose Resume"
+                        class="form-control-file"
+                    >
+                    <input type="hidden" value="{{ Auth::user()->id }}" name="id"/>
                 </div>
-                <button type="submit" class="btn btn-success float-right">Submit</button>
+
+                <button type="submit" class="btn btn-success float-right">Upload</button>
             </form>
         </div>
     </div>
