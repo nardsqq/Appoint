@@ -36,4 +36,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function addResume($path, $id)
+    {
+        \DB::beginTransaction();
+
+        $user = User::findOrFail($id);
+        $user->resume = $path;
+        $user->save();
+        \DB::commit();
+         
+    }
 }

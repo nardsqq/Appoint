@@ -60,6 +60,10 @@
                                     >
                                         {{ __('Logout') }}
                                     </a>
+                                    
+                                    <a class="dropdown-item" href="{{ url('/resume/create') }}">
+                                        Upload Resume
+                                    </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
