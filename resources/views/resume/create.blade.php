@@ -3,8 +3,7 @@
 @section('content')
 
 @section('page-info')
-    Add a new <b>Event Type</b> record.
-    <a href="{{ route('event-types.index') }}" class="float-right text-dark"><< Return to the Event Types page</a>
+    Upload your <b>Resume</b> 
 @endsection
 
 <section class="col-md-6 my-3">
