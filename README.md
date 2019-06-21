@@ -32,5 +32,6 @@
 ### Usage
 
 1. After *migrating*, execute a separate command shell within the project folder.
-2. Run `php artisan serve` on your command shell, just make sure you're within the directory of your local repository.
-3. Open any modern browsers (Chrome, Firefox, Edge etc) and access the application by typing `http://localhost:8000` on your address bar.
+2. Next, run `php artisan storage:link` to link `public/storage` directory.
+3. Run `php artisan serve` on your command shell, just make sure you're within the directory of your local repository.
+4. Open any modern browsers (Chrome, Firefox, Edge etc) and access the application by typing `http://localhost:8000` on your address bar.
