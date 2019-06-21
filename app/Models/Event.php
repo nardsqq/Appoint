@@ -32,7 +32,7 @@ class Event extends Model
         'event_type_id' => 'required',
         'client_id' => 'required',
         'description' => 'required|min:3|max:255',
-        'budget' => 'required',
+        'budget' => 'required|digits_between:0,100000000000',
         'status' => 'required',
         'venue' => 'required|min:3|max:255'
     ];

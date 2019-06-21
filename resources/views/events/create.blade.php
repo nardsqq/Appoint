@@ -84,7 +84,7 @@
                     <div class="form-group col-md-12">
                         <label for="budget">Budget</label>
                         <input 
-                            type="number" 
+                            type="text" 
                             class="form-control"
                             name="budget"
                             id="budget"
