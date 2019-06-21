@@ -38,7 +38,7 @@ class EventTypesController extends Controller
      */
     public function store(Request $request)
     {
-        EventType::create($request->validate(EventType::$rules));
+        EventType::create($request->validate(EventType::rules()));
 
         return redirect()->route('event-types.index');
     }
@@ -74,7 +74,7 @@ class EventTypesController extends Controller
      */
     public function update(Request $request, EventType $event_type)
     {
-        $event_type->update($request->validate(EventType::$rules));
+        $event_type->update($request->validate(EventType::rules($event_type->id)));
 
         return view('event_types.view', compact('event_type'));
     }

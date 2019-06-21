@@ -19,7 +19,9 @@ class EventType extends Model
         return $this->hasMany(Event::class);
     }
 
-    public static $rules = [
-        'name' => 'required|unique:event_types|min:3|max:255'
-    ];
+    public static function rules($id = '') {
+        return [
+            'name' => 'required|unique:event_types,name,'.$id.'|min:3|max:255'
+        ];
+    } 
 }
