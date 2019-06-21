@@ -109,7 +109,7 @@
                             class="form-control"
                             name="date_time"
                             id="date_time"
-                            value="{{ $event->date_time->format('M d Y H:i:s') }}"
+                            value="{{ $event->date_time->format('Y-m-d\TH:i') }}"
                             disabled
                         >
                     </div>

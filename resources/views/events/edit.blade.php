@@ -99,6 +99,19 @@
                         >
                     </div>
                 </div>
+                
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label for="budget">Date and Time</label>
+                        <input 
+                            type="datetime-local" 
+                            class="form-control"
+                            name="date_time"
+                            id="date_time"
+                            value="{{ $event->date_time->format('Y-m-d\TH:i') }}"
+                        >
+                    </div>
+                </div>
 
                 <div class="form-group">
                     <label for="status">Status</label>
