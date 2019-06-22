@@ -5,7 +5,7 @@ namespace Appoint\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-use Appoint\Models\{
+use Appoint\Models \ {
     Client,
     EventType
 };
@@ -15,8 +15,8 @@ class Event extends Model
     use SoftDeletes;
 
     protected $guarded = [];
-    protected $dates = ['deleted_at', 'date_time'];
-    
+    protected $dates = ['created_at', 'updated_at', 'deleted_at', 'date_time'];
+
     public function client()
     {
         return $this->belongsTo(Client::class);
@@ -37,4 +37,9 @@ class Event extends Model
         'venue' => 'required|min:3|max:255',
         'date_time' => 'required'
     ];
+
+    public function setDateAttribute($value)
+    {
+        $this->date = Carbon\Carbon::createFromFormat('d-m-Y h:i', $value);
+    }
 }

@@ -9,6 +9,7 @@ use Appoint\Models\{
     Client,
     EventType
 };
+use Carbon;
 
 class EventsController extends Controller
 {
@@ -44,8 +45,9 @@ class EventsController extends Controller
      */
     public function store(Request $request)
     {
-        // \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $request->date_time);
-        $event = Event::create($request->validate(Event::$rules));
+        $newDate =  \Carbon\Carbon::createFromFormat('Y-m-d\TH:i',$request->date_time);
+        $request->merge(['date_time' => $newDate]);
+        Event::create($request->validate(Event::$rules));
 
         return redirect()->route('events.index');
     }
@@ -89,6 +91,9 @@ class EventsController extends Controller
     {
         $client = Client::find($event->client_id);
         $event_type = EventType::find($event->event_type_id);
+
+        $newDate =  \Carbon\Carbon::createFromFormat('Y-m-d\TH:i',$request->date_time);
+        $request->merge(['date_time' => $newDate]);
 
         $event->update($request->all());
 
