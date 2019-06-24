@@ -28,6 +28,8 @@ class Booking extends Model
     public static $rules = [
         'description' => 'required|min:3|max:255',
         'start_date' => 'required',
-        'end_date' => 'required'
+        'end_date' => 'required',
+        'event_id' => 'required',
+        'user_id' => 'required'
     ];
 }
