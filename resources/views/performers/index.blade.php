@@ -19,7 +19,7 @@
                 <tr>
                     <td>{{ $performer->name }}</td>
                     <td class="text-center">
-                        <a href="{{ url('storage/'. $performer->resume) }}" download="{{ asset('storage/'. $performer->resume) }}" class="btn btn-info btn-sm text-light">View Resume</a>
+                        <a href="{{ url('storage/'. $performer->resume) }}" download="{{ asset('storage/'. $performer->resume) }}" class="btn btn-info btn-sm text-light">Download Resume</a>
                     </td>
                 </tr>
             @endforeach
